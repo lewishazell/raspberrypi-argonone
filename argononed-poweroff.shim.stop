@@ -1,0 +1,9 @@
+#!/bin/bash
+SHUTDOWN_SCRIPT="/usr/bin/argononed-shutdown.py"
+RUN_LEVEL=`who -r | awk '{print $2}'`
+
+if [ $RUN_LEVEL = "0" ]; then
+  $SHUTDOWN_SCRIPT "poweroff"
+elif [ $RUN_LEVEL = "6" ]; then
+  $SHUTDOWN_SCRIPT "reboot"
+fi
